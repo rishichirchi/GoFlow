@@ -21,5 +21,7 @@ func main() {
 	app.GET("/pull-requests", handlers.FetchPullRequests)
 	app.GET("/make-post", handlers.MakeTweet)
 
+	app.GET("/generate-posts", handlers.GenerateSocialMediaPost)
+
 	app.Run()
 }

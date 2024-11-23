@@ -17,7 +17,7 @@ import (
 func GeminiChatBot(ctx *gofr.Context) (interface{}, error) {
 	prompt := ctx.Request.Param("prompt")
 
-	filepath := "gofr-introduction.md"
+	filepath := "instructions/gofr-introduction.md"
 	file, err := os.Open(filepath)
 
 	if err != nil{
