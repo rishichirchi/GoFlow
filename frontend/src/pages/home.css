@@ -8,7 +8,7 @@
 }
 
 .chatbot-header {
-  padding: 1rem;
+  padding: 1rem 0rem 0rem 1rem;
   background-color: #27293d;
   color: #ffffff;
   text-align: center;
@@ -41,7 +41,7 @@
 
 .message-text {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 20px;
   max-width: 80%;
 }
@@ -59,7 +59,7 @@
 .chatbot-input {
   padding: 1rem;
   border-top: 1px solid #444444; 
-  background-color: #1a1a1a;
+  background-color: transparent;
 }
 
 .chatbot-input form {
@@ -70,9 +70,10 @@
 .chatbot-input input {
   flex-grow: 1;
   padding: 0.5rem;
-  border: 1px solid #4a4a4a;
+  border: 1px solid #7c3aed;
   border-radius: 4px;
-  background-color: #282828; 
+  background-color: transparent;
+  outline:none; 
   color: #ffffff; 
   font-size: 1rem;
 }
