@@ -18,7 +18,8 @@ func main() {
 
 	app.GET("/chatbot", handlers.GeminiChatBot)
 	app.GET("/cold-email", handlers.EmailOutreach)
-	app.GET("/pull-requests", handlers.FetchPullRequests)
+	app.GET("/pull-requests", handlers.GenerateSocialMediaPost)
+
 	app.GET("/make-post", handlers.MakeTweet)
 
 	app.GET("/generate-posts", handlers.GenerateSocialMediaPost)

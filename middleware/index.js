@@ -25,9 +25,12 @@ const authClient = new auth.OAuth2User({
 });
 const client = new Client(authClient);
 
+const STATE = "my-state";
+
 app.get("/callback", async function (req, res) {
   try {
     const { code, state } = req.query;
+    if (state !== STATE) return res.status(500).send("State isn't matching");
     await authClient.requestAccessToken(code);
     res.redirect("/tweets");
   } catch (error) {
@@ -37,6 +40,7 @@ app.get("/callback", async function (req, res) {
 
 app.get("/login", async function (req, res) {
   const authUrl = authClient.generateAuthURL({
+    state: STATE,
     code_challenge_method: "s256",
   });
   res.redirect(authUrl);
@@ -54,7 +58,7 @@ app.get("/revoke", async function (req, res) {
 app.get("/tweets", async function (req, res) {
   try {
     const response = await client.tweets.createTweet({
-      text: "hello server 2",
+      text: "hello server 16",
     });
 
     console.log("response", JSON.stringify(response, null, 2));
