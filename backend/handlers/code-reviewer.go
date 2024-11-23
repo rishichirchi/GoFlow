@@ -3,22 +3,29 @@ package handlers
 import (
 	"context"
 	"encoding/json"
+	"gotta-go/models"
 	"io/ioutil"
 	"log"
 	"os"
-
-	"gotta-go/models"
 
 	"github.com/google/generative-ai-go/genai"
 	"gofr.dev/pkg/gofr"
 	"google.golang.org/api/option"
 )
 
-func GeminiChatBot(ctx *gofr.Context) (interface{}, error) {
-	prompt := ctx.Request.Param("prompt")
+func GenerateCodeReview(ctx *gofr.Context)(interface{}, error){
+	var filepath models.File
 
-	filepath := "instructions/gofr-introduction.md"
-	file, err := os.Open(filepath)
+	err := ctx.Bind(&filepath)
+
+	if err != nil{
+		log.Println("Error binding file:", err)
+		return nil, err
+	}
+
+	log.Println("File:", filepath)
+
+	file, err := os.Open(filepath.Name)
 
 	if err != nil {
 		log.Println("Error opening file:", err)
@@ -32,7 +39,23 @@ func GeminiChatBot(ctx *gofr.Context) (interface{}, error) {
 
 	log.Println("file content:", string(content))
 
-	geminiPrompt := string(content) + prompt
+	instructions := "instructions/code-review.md"
+
+	instructionFile, err := os.Open(instructions)
+
+	if err != nil{
+		log.Println("Error opening file:", err)
+	}
+
+	defer instructionFile.Close()
+
+	instructionContent, err := ioutil.ReadAll(instructionFile)
+
+	if err != nil {
+		log.Println("Error reading file:", err)
+	}
+
+	geminiPrompt := string(content) + string(instructionContent)
 
 	api_key := os.Getenv("GEMINI_API_KEY")
 
@@ -41,35 +64,28 @@ func GeminiChatBot(ctx *gofr.Context) (interface{}, error) {
 	client, err := genai.NewClient(geminiCtx, option.WithAPIKey(api_key))
 
 	if err != nil {
-		return models.ChatbotResponse{Response: err.Error()}, err
+		return nil, err
 	}
 
 	defer client.Close()
 
 	model := client.GenerativeModel("gemini-1.5-flash")
 
-	model.SetMaxOutputTokens(100)
+	// model.SetMaxOutputTokens(100)
 
 	response, err := model.GenerateContent(geminiCtx, genai.Text(geminiPrompt))
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 
 	marshalResponse, _ := json.MarshalIndent(response, "", "  ")
 
-	var geminiResp models.GeminiResponse
-	err = json.Unmarshal(marshalResponse, &geminiResp)
 	if err != nil {
-		log.Println("Error unmarshalling response:", err)
-		return models.ChatbotResponse{Response: err.Error()}, err
+		log.Println("Error marshalling response:", err)
+		return nil, err
 	}
 
-	if len(geminiResp.Candidates) > 0 && len(geminiResp.Candidates[0].Content.Parts) > 0 {
-		parts := geminiResp.Candidates[0].Content.Parts[0]
-		log.Println("response:", parts)
-		return models.ChatbotResponse{Response: parts}, nil
-	}
+	return string(marshalResponse), nil
 
-	return models.ChatbotResponse{Response: "error"}, nil
 }

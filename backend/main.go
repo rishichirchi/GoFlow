@@ -23,6 +23,7 @@ func main() {
 	app.GET("/make-post", handlers.MakeTweet)
 
 	app.GET("/generate-posts", handlers.GenerateSocialMediaPost)
-
+	app.POST("/code-review", handlers.GenerateCodeReview)
+	
 	app.Run()
 }
