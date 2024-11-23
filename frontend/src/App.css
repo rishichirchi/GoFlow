@@ -54,6 +54,7 @@
   .navbar-item img {
     width: 24px;
     height: 24px;
+    color: #fff;
   }
   
   /* Main content area */
@@ -81,4 +82,3 @@
   .toggle-button:hover {
     background: #3a3af0;
   }
-  

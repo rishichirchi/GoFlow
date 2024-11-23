@@ -20,16 +20,16 @@ function App() {
           <div className="navbar">
             {/* Nav Items */}
             <Link to="/" className="navbar-item">
-              <img src="/icons/home.svg" alt="Home" />
+              <img src="/public/icons/home.svg" alt="Home"/>
             </Link>
-            <Link to="/settings" className="navbar-item">
-              <img src="/icons/settings.svg" alt="Settings" />
+            <Link to="/settings" className="navbar-item" >
+              <img src="/public/icons/settings.svg" alt="Settings"/>
             </Link>
             <Link to="/profile" className="navbar-item">
-              <img src="/icons/profile.svg" alt="Profile" />
+              <img src="/public/icons/profile.svg" alt="Profile"/>
             </Link>
             <Link to="/help" className="navbar-item">
-              <img src="/icons/help.svg" alt="Help" />
+              <img src="/public/icons/help.svg" alt="Help"/>
             </Link>
           </div>
         </div>
