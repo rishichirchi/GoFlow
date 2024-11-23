@@ -1,9 +1,14 @@
 import express from "express";
 import { Client, auth } from "twitter-api-sdk";
 import dotenv from "dotenv";
+import cors from "cors";
+
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
+app.use(cors());
 
 const URL = process.env.URL || "http://127.0.0.1";
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
@@ -55,10 +60,14 @@ app.get("/revoke", async function (req, res) {
   }
 });
 
-app.get("/tweets", async function (req, res) {
+app.post("/tweets", async function (req, res) {
+  const content = req.body.content;
+  if (!content) {
+    return res.status(400).send("Content is required");
+  }
   try {
     const response = await client.tweets.createTweet({
-      text: "hello server 16",
+      text: content,
     });
 
     console.log("response", JSON.stringify(response, null, 2));

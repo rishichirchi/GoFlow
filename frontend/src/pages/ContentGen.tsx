@@ -14,7 +14,10 @@ const ContentGen: React.FC = () => {
   // Helper function to clean and parse JSON strings
   const processJsonString = (jsonString: string): Post[] => {
     // Remove ```json and ``` from the string
-    const cleanedString = jsonString.replace(/```json/g, "").replace(/```/g, "").trim();
+    const cleanedString = jsonString
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
 
     // Parse the cleaned JSON string into a JavaScript array of objects
     let parsedObjects: Post[] = [];
@@ -47,13 +50,20 @@ const ContentGen: React.FC = () => {
 
   const handlePost = async (post: string) => {
     try {
-      const response = await fetch(`http://localhost:8000/tweets?content=${post}`);
+      const response = await fetch(`http://127.0.0.1:3000/tweets`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content: post }),
+      });
       const data = await response.json();
+      alert("Post successful!");
       console.log(data);
     } catch (error) {
       console.error("Error posting the data:", error);
     }
-  }
+  };
   return (
     <div className="Concontainer">
       <header className="Conheader">Post Generator</header>
@@ -70,7 +80,13 @@ const ContentGen: React.FC = () => {
             {posts.map((post, index) => (
               <li key={index}>
                 <strong>{post.platform}:</strong> {post.content}
-                <button onClick={()=>{handlePost(post.content)}}>post</button>
+                <button
+                  onClick={() => {
+                    handlePost(post.content);
+                  }}
+                >
+                  post
+                </button>
               </li>
             ))}
           </ul>
