@@ -50,7 +50,6 @@ func FetchPullRequests()(interface{}, error) {
 		log.Fatalf("Unexpected status code: %d", response.StatusCode)
 	}
 
-	// Read and display the response body
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatalf("Error reading response body: %v", err)
