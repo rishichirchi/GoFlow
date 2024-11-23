@@ -1,84 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 /* Sidebar container */
-.mainCon{
-    height: 100vh;
-    width: 30rem;
+.mainCon {
+  height: 100vh;
 }
 
 .sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    min-height: 100vh;
-    width: 80px; /* Fixed width for the navbar */
-    background: #1c1c28; /* Dark background */
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  /* Hide the sidebar by default */
-  .sidebar-hidden {
-    transform: translateX(100%);
-  }
-  
-  /* Nav bar styles */
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .navbar-item {
-    margin: 15px 0;
-    width: 50px;
-    height: 50px;
-    background: #27293d; /* Lighter dark background for icons */
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .navbar-item:hover {
-    background: #4a4cff; /* Highlight color */
-    transform: scale(1.1); /* Enlarge on hover */
-  }
-  
-  /* Icon styles */
-  .navbar-item img {
-    width: 24px;
-    height: 24px;
-    color: #fff;
-  }
-  
-  /* Main content area */
-  .main-content {
-    height: 95vh;
-    margin-right: 80px; /* Adjust for the sidebar width */
-    padding: 20px;
-  }
-  
-  /* Toggle button for sidebar */
-  .toggle-button {
-    position: fixed;
-    top: 20px;
-    right: 90px; /* Adjust based on sidebar width */
-    z-index: 1100;
-    background: #4a4cff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .toggle-button:hover {
-    background: #3a3af0;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-height: 100vh;
+  width: 80px; /* Fixed width for the navbar */
+  background: #1c1c28; /* Dark background */
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hide the sidebar by default */
+.sidebar-hidden {
+  transform: translateX(100%);
+}
+
+/* Nav bar styles */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar-item {
+  margin: 15px 0;
+  width: 50px;
+  height: 50px;
+  background: #27293d; /* Lighter dark background for icons */
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-item:hover {
+  background: #4a4cff; /* Highlight color */
+  transform: scale(1.1); /* Enlarge on hover */
+}
+
+/* Icon styles */
+.navbar-item img {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+/* Main content area */
+.main-content {
+  height: 95vh;
+  margin-right: 80px; /* Adjust for the sidebar width */
+  padding: 20px;
+}
+
+/* Toggle button for sidebar */
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 90px; /* Adjust based on sidebar width */
+  z-index: 1100;
+  background: #4a4cff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-button:hover {
+  background: #3a3af0;
+}
