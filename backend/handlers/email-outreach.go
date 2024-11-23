@@ -15,7 +15,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-// GenerateColdEmailForGolang generates a cold email for Golang developers.
+
 func GenerateColdEmailForGolang(inputPurpose string) (string, string, error) {
 	err := godotenv.Load()
 	if err != nil {
