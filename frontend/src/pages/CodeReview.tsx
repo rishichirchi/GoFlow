@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./codeReview.css";
+import Markdown from "react-markdown";
 
 const CodeReview: React.FC = () => {
   const [fileName, setFileName] = useState<string | null>(null); // State for uploaded file name
@@ -18,7 +19,6 @@ const CodeReview: React.FC = () => {
   // Confirm and make API call
   const confirmFile = async () => {
     if (!fileContent) {
-      alert("No file uploaded!");
       return;
     }
 
@@ -35,12 +35,10 @@ const CodeReview: React.FC = () => {
       const data = await response.json();
       console.log("API Response:", data);
       const x = JSON.parse(data.data);
-      alert("File processed successfully! " + x.Candidates[0].Content.Parts[0])
 
       setResponse(x.Candidates[0].Content.Parts[0]); // Set the response from the API
     } catch (error) {
       console.error("Error processing the file:", error);
-      alert("Failed to process the file. Check the console for details." + error);
     }
   };
 
@@ -78,7 +76,12 @@ const CodeReview: React.FC = () => {
       {response && (
         <div className="input-container" style={{ marginTop: "10px" }}>
           <h2>Response: </h2>
-          <div className="footer response">{response}</div>
+          <div className="footer response">
+
+            <Markdown>
+              {response}
+            </Markdown>
+            </div>
           <div className="action-buttons"></div>
         </div>
       )}
