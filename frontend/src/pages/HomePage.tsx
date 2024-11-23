@@ -26,7 +26,6 @@ export default function HomePage() {
       setMessages([...messages, newMessage])
       setInput('')
       
-      // Simulate bot response
       setTimeout(() => {
         const botResponse: Message = { id: messages.length + 2, text: "I'm a demo bot. I can't actually respond to your messages.", sender: 'bot' }
         setMessages(prevMessages => [...prevMessages, botResponse])
@@ -37,7 +36,7 @@ export default function HomePage() {
   return (
     <div className="chatbot-container">
       <header className="chatbot-header">
-        <h1>GoFr Bot</h1>
+        <h1>Talk to GoFr</h1>
       </header>
       <div className="chatbot-messages">
         {messages.map((message) => (
