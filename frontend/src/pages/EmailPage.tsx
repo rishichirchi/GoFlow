@@ -5,8 +5,11 @@ export default function EmailPage() {
   const [input, setInput] = useState("");
   const [currentMode, setCurrentMode] = useState("email");
   const [response, setResponse] = useState("");
-  const handleSubmit = () => {
-    setResponse(input);
+  const handleSubmit = async () => {
+    const response = await fetch(`http://localhost:8000/cold-email?prompt=${input}`);
+    const data = await response.json();
+
+    setResponse(data.data.response);
   };
 
   return (

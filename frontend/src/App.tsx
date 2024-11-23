@@ -29,12 +29,6 @@ function App() {
             <Link to="/settings" className="navbar-item" >
               <img src="/public/icons/settings.svg" alt="Settings"/>
             </Link>
-            <Link to="/profile" className="navbar-item">
-              <img src="/public/icons/profile.svg" alt="Profile"/>
-            </Link>
-            <Link to="/help" className="navbar-item">
-              <img src="/public/icons/help.svg" alt="Help"/>
-            </Link>
           </div>
         </div>
 
@@ -43,7 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/email" element={<EmailPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/content-gen" element={<SettingsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/help" element={<div>Help Page</div>} />
           </Routes>
