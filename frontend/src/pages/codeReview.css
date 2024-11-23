@@ -90,10 +90,11 @@
     background-color: #2d3748; /* Matches the input box style */
     color: #fff;
   }
-  .footer {
+
+  .footerXC {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     padding: 2rem;
   }
@@ -104,3 +105,6 @@
     gap: 10px;
   }
   
+  .paddingClass{
+    padding: 2rem;
+  }

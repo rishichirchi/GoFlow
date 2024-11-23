@@ -6,7 +6,7 @@ const CodeReview: React.FC = () => {
   const [fileName, setFileName] = useState<string | null>(null); // State for uploaded file name
   const [fileContent, setFileContent] = useState<File | null>(null); // State for file content
   const [response, setResponse] = useState<string>(""); // State for the response from the API
-
+  const [isLoading, setIsLoading] = useState<boolean>(false); // State for loading state
   // Handle file upload
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -19,10 +19,12 @@ const CodeReview: React.FC = () => {
   // Confirm and make API call
   const confirmFile = async () => {
     if (!fileContent) {
+      setIsLoading(false);;
       return;
     }
 
     try {
+      setIsLoading(true);
       const formData = new FormData();
       formData.append("name", fileName || ""); // Append the file name to FormData
       formData.append("file_upload", fileContent); // Append the file content to FormData
@@ -39,6 +41,8 @@ const CodeReview: React.FC = () => {
       setResponse(x.Candidates[0].Content.Parts[0]); // Set the response from the API
     } catch (error) {
       console.error("Error processing the file:", error);
+    }finally{
+      setIsLoading(false);
     }
   };
 
@@ -62,7 +66,7 @@ const CodeReview: React.FC = () => {
         <div>
           <p>Uploaded file: {fileName}</p>
           <button className="Conbutton" onClick={confirmFile}>
-            Confirm and Process
+            {isLoading ? "Loader...." : "Confirm and Process"}
           </button>
         </div>
       )}
@@ -76,9 +80,9 @@ const CodeReview: React.FC = () => {
       {response && (
         <div className="input-container" style={{ marginTop: "10px" }}>
           <h2>Response: </h2>
-          <div className="footer response">
+          <div className="footerXC response">
 
-            <Markdown>
+            <Markdown >
               {response}
             </Markdown>
             </div>
