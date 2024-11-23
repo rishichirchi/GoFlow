@@ -33,6 +33,7 @@ module.exports = {
       patterns: [
         // Copy the `manifest.json` file to the root of the `dist` folder
         { from: "manifest.json", to: "../manifest.json" },
+        { from: "background.js", to: "../background.js" },
         // Copy the entire `public` folder into the `dist` folder
         { from: "public", to: "../public" },
       ],
