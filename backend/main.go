@@ -8,7 +8,7 @@ import (
 	"gofr.dev/pkg/gofr"
 )
 
-func main(){
+func main() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("Error loading .env file")
@@ -19,6 +19,7 @@ func main(){
 	app.GET("/chatbot", handlers.GeminiChatBot)
 	app.GET("/cold-email", handlers.EmailOutreach)
 	app.GET("/pull-requests", handlers.FetchPullRequests)
-	
+	app.GET("/make-post", handlers.MakeTweet)
+
 	app.Run()
 }
