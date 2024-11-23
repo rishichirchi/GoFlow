@@ -9,6 +9,7 @@ import (
 
 	"github.com/google/generative-ai-go/genai"
 	"github.com/joho/godotenv"
+	"gofr.dev/pkg/gofr"
 	"google.golang.org/api/option"
 )
 
@@ -62,3 +63,13 @@ func GenerateColdEmailForGolang(inputPurpose string) (string, error) {
 
 	return "No content found", nil
 }
+
+func EmailOutreach(ctx *gofr.Context) (interface{}, error) {
+	inputPurpose := "Introducing a tool to simplify concurrency management in Go applications."
+	email, err := GenerateColdEmailForGolang(inputPurpose)
+	if err != nil {
+		return nil, err
+	}
+	return models.ChatbotResponse{Response: email}, nil
+}
+
