@@ -65,7 +65,6 @@
 .main-content {
   height: 95vh;
   margin-right: 80px; /* Adjust for the sidebar width */
-  padding: 20px;
 }
 
 /* Toggle button for sidebar */
