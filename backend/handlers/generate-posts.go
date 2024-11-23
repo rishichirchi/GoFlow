@@ -85,7 +85,12 @@ func GenerateSocialMediaPost(ctx *gofr.Context) (interface{}, error) {
 
 	// log.Println("file content:", string(content))
 
-	prompt, _ := FetchPullRequests()
+	prompt, err := FetchPullRequests()
+
+	if err != nil{
+		log.Println("error in creating fetching response")
+		return err.Error(), err
+	}
 
 	geminiPrompt := string(content) + fmt.Sprintf("%v", prompt)
 
@@ -96,7 +101,8 @@ func GenerateSocialMediaPost(ctx *gofr.Context) (interface{}, error) {
 	client, err := genai.NewClient(geminiCtx, option.WithAPIKey(api_key))
 
 	if err != nil {
-		return models.ChatbotResponse{Response: err.Error()}, err
+		log.Println("error in creating new client")
+		return err.Error(), err
 	}
 
 	defer client.Close()
@@ -108,7 +114,8 @@ func GenerateSocialMediaPost(ctx *gofr.Context) (interface{}, error) {
 	response, err := model.GenerateContent(geminiCtx, genai.Text(geminiPrompt))
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println("error in generating response")
+		log.Println(err)
 	}
 
 	marshalResponse, _ := json.MarshalIndent(response, "", "  ")
