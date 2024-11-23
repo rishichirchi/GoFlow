@@ -1,15 +1,27 @@
 {
-    "version": "1.0.0",
-    "manifest_version": 3,
-    "name": "GoFrConnect",
-    "action": {
-      "default_popup": "js/index.html",
-      "default_title": "GoFrConnect"
-    },
-    "icons": {
-      "16": "public/logo16.png",
-      "48": "public/logo48.png",
-      "128": "public/logo128.png"
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "name": "GoFrConnect",
+  "description": "GoFrConnect is a web extension that helps you connect with up-to-date information about your gofr",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "GoFrConnect"
+  },
+  "icons": {
+    "16": "public/logo16.png",
+    "48": "public/logo48.png",
+    "128": "public/logo128.png"
+  },
+  "permissions": ["sidePanel", "activeTab"],
+  "side_panel": {
+    "default_path": "js/index.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.js", "*.png"],
+      "matches": ["<all_urls>"]
     }
-  }
-  
+  ]
+}
