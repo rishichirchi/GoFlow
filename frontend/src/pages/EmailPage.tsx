@@ -16,7 +16,6 @@ export default function EmailPage() {
     <div className="emailpage" style={{ padding: "1rem" }}>
       <div className="tabs">
         <button className="tab active">Write</button>
-        <button className="tab">Reply</button>
       </div>
       <div className="options">
         <button
@@ -25,36 +24,7 @@ export default function EmailPage() {
         >
           Email
         </button>
-        <button
-          className={`option ${currentMode === "letter" ? "active" : ""}`}
-          onClick={() => setCurrentMode("letter")}
-        >
-          Essay
-        </button>
-        <button
-          className={`option ${currentMode === "paragraph" ? "active" : ""}`}
-          onClick={() => setCurrentMode("paragraph")}
-        >
-          Paragraph
-        </button>
-        <button
-          className={`option ${currentMode === "idea" ? "active" : ""}`}
-          onClick={() => setCurrentMode("idea")}
-        >
-          Idea
-        </button>
-        <button
-          className={`option ${currentMode === "blog" ? "active" : ""}`}
-          onClick={() => setCurrentMode("blog")}
-        >
-          Blog Post
-        </button>
-      </div>
-      <div className="settings">
-        Type:
-        <span className="setting">Formal</span> -
-        <span className="setting">Short</span> -
-        <span className="setting">English</span>
+        
       </div>
       <div className="input-container">
         <textarea
