@@ -83,7 +83,7 @@ func GenerateSocialMediaPost(ctx *gofr.Context) (interface{}, error) {
 		log.Println("Error reading file:", err)
 	}
 
-	log.Println("file content:", string(content))
+	// log.Println("file content:", string(content))
 
 	prompt, _ := FetchPullRequests()
 
