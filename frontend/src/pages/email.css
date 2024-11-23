@@ -1,0 +1,132 @@
+.emailpage{  /* Main container */
+  .container {
+    width: 400px;
+    background-color: #1e293b; /* Darker blue */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .tab.active {
+    border-bottom: 2px solid #7c3aed; /* Purple border for active tab */
+  }
+  
+  /* Options */
+  .options {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .option {
+    background-color: #2d3748; /* Slightly lighter dark blue */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .option.active {
+    background-color: #7c3aed; /* Purple for active option */
+  }
+  
+  .dropdown {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  /* Settings */
+  .settings {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+  
+  /* Input box */
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .input-box {
+    width: 100%;
+    height: 100px;
+    background-color: #2d3748;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    resize: none;
+    font-size: 0.9rem;
+  }
+  
+  .input-box::placeholder {
+    color: #94a3b8; /* Gray placeholder */
+  }
+  
+  .submit-btn {
+    background-color: #7c3aed;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .submit-btn:enabled {
+    cursor: pointer;
+    opacity: 1;
+  }
+  
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .footer-btn {
+    background-color: #2d3748;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .footer-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+}
