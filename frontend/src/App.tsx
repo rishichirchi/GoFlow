@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import SettingsPage from "./pages/SettingsPage";
 import ProfilePage from "./pages/ProfilePage";
 import EmailPage from "./pages/EmailPage";
 import "./App.css";
+import ContentGen from "./pages/ContentGen";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar visible by default
@@ -26,7 +26,7 @@ function App() {
             <Link to="/email" className="navbar-item">
               <img src="/public/icons/email.svg" alt="Email"/>
             </Link>
-            <Link to="/settings" className="navbar-item" >
+            <Link to="/content-gen" className="navbar-item" >
               <img src="/public/icons/settings.svg" alt="Settings"/>
             </Link>
           </div>
@@ -37,7 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/email" element={<EmailPage />} />
-            <Route path="/content-gen" element={<SettingsPage />} />
+            <Route path="/content-gen" element={<ContentGen />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/help" element={<div>Help Page</div>} />
           </Routes>
