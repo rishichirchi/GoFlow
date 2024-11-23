@@ -50,9 +50,12 @@ const ContentGen: React.FC = () => {
       const response = await fetch(`http://localhost:8000/tweets?content=${post}`);
       const data = await response.json();
       console.log(data);
+      alert("Post successful!");
     } catch (error) {
       console.error("Error posting the data:", error);
+      alert("Something went wrong");
     }
+
   }
   return (
     <div className="Concontainer">
