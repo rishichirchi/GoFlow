@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import ProfilePage from "./pages/ProfilePage";
+import FileUploader from "./pages/CodeReview";
 import EmailPage from "./pages/EmailPage";
 import "./App.css";
 import ContentGen from "./pages/ContentGen";
@@ -27,7 +27,10 @@ function App() {
               <img src="/public/icons/email.svg" alt="Email"/>
             </Link>
             <Link to="/content-gen" className="navbar-item" >
-              <img src="/public/icons/settings.svg" alt="Settings"/>
+              <img src="/public/icons/content.svg" alt="content"/>
+            </Link>
+            <Link to="/review" className="navbar-item" >
+              <img src="/public/icons/check.svg" alt="check"/>
             </Link>
           </div>
         </div>
@@ -38,7 +41,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/email" element={<EmailPage />} />
             <Route path="/content-gen" element={<ContentGen />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/review" element={<FileUploader />} />
             <Route path="/help" element={<div>Help Page</div>} />
           </Routes>
         </div>

@@ -60,8 +60,10 @@ const ContentGen: React.FC = () => {
       const data = await response.json();
       alert("Post successful!");
       console.log(data);
+      alert("Post successful!");
     } catch (error) {
       console.error("Error posting the data:", error);
+      alert("Something went wrong");
     }
   };
   return (

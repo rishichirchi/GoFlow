@@ -1,3 +1,4 @@
+import Markdown from "react-markdown";
 import "./home.css";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -57,7 +58,11 @@ export default function HomePage() {
               message.sender === "user" ? "user-message" : "bot-message"
             }`}
           >
-            <span className="message-text">{message.text}</span>
+            <span className="message-text">
+              <Markdown>
+                {message.text}
+              </Markdown>
+            </span>
           </div>
         ))}
         <div ref={messagesEndRef} />
