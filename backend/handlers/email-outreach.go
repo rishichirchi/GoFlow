@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"net/smtp"
 	"os"
+	"net/smtp"
 
 	"gotta-go/models"
 	"github.com/google/generative-ai-go/genai"
@@ -17,6 +17,7 @@ import (
 
 
 func GenerateColdEmailForGolang(inputPurpose string) (string, string, error) {
+	
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("Error loading .env file")
@@ -31,26 +32,32 @@ func GenerateColdEmailForGolang(inputPurpose string) (string, string, error) {
 	}
 	defer client.Close()
 
-	prompt := `You are an email copywriting assistant. Generate a professional and engaging cold email tailored for reaching out to Golang developers. 
-	The email should follow this structure:
+	
+	prompt := fmt.Sprintf(`
+    You are an expert copywriter crafting cold outreach emails for Golang developers.
+    The goal is to create a concise yet highly engaging and professional email that conveys value to the recipient.
 
-	1. **Subject Line** - Catchy and relevant to Golang developers.
-	2. **Greeting** - Personalized greeting using the recipient’s name.
-	3. **Introduction** - Briefly introduce the product or service, its key benefits, and how it addresses challenges Golang developers face.
-	4. **Main Body** - Detailed explanation of how your product/service can help Golang developers, such as improving workflow, scaling, or simplifying tasks. Use bullet points if needed.
-	5. **Call to Action** - Encourage the recipient to take action, such as scheduling a demo or checking out resources.
-	6. **Closing** - End with a polite sign-off, including your name and company.
+    Please generate the email with the following sections:
+    
+    1. **Subject Line**: A catchy and clear subject line for a Golang developer (e.g., "Enhance Your Golang Development Today").
+    2. **Greeting**: A personalized greeting, e.g., "Hi there," or "Hello Golang Enthusiast,".
+    3. **Introduction**: A brief 2-3 sentence introduction to your product/service, explaining what it does and why it’s relevant to the recipient.
+    4. **Value Proposition (Main Body)**: 
+        - A few bullet points that clearly explain how your product/service solves problems Golang developers face (e.g., increasing productivity, simplifying code, handling concurrency).
+    5. **Call to Action**: A strong and clear CTA like "Get a demo today," or "Learn more about our solution."
+    6. **Closing**: A polite sign-off, like "Best regards," followed by your name and company.
 
-	The purpose of the email is as follows: ` + inputPurpose + `
+    **Purpose of the email**: %s
+	`, inputPurpose)
 
-	Make sure the email is concise, personalized, and highlights how our product or service addresses the challenges faced by Golang developers. Include a strong call to action at the end.`
-
+	
 	model := client.GenerativeModel("gemini-1.5-flash")
 	response, err := model.GenerateContent(geminiCtx, genai.Text(prompt))
 	if err != nil {
 		return "", "", err
 	}
 
+	
 	marshalResponse, _ := json.MarshalIndent(response, "", "  ")
 	var geminiResp models.GeminiResponse
 	err = json.Unmarshal(marshalResponse, &geminiResp)
@@ -59,9 +66,10 @@ func GenerateColdEmailForGolang(inputPurpose string) (string, string, error) {
 		return "", "", err
 	}
 
+	
 	if len(geminiResp.Candidates) > 0 && len(geminiResp.Candidates[0].Content.Parts) > 0 {
 		emailBody := geminiResp.Candidates[0].Content.Parts[0]
-		emailSubject := "Exciting Tool for Golang Developers" 
+		emailSubject := "Exciting Tool for Golang Developers"
 		return emailBody, emailSubject, nil
 	}
 
@@ -93,17 +101,28 @@ func SendEmail(to, subject, body string) error {
 
 
 func EmailOutreach(ctx *gofr.Context) (interface{}, error) {
+	
 	inputPurpose := "Introducing a tool to simplify concurrency management in Go applications."
+
+	
 	emailBody, emailSubject, err := GenerateColdEmailForGolang(inputPurpose)
 	if err != nil {
 		return nil, err
 	}
 
-	targetEmail := "eduksh01@gmail.com" 
-	err = SendEmail(targetEmail, emailSubject, emailBody)
+	
+	log.Printf("Generated Email Subject: %s\n", emailSubject)
+	log.Printf("Generated Email Body: %s\n", emailBody)
+
+	
+	recipientEmail := "eduksh01@gmail.com"
+	err = SendEmail(recipientEmail, emailSubject, emailBody)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to send email: %v", err)
 	}
 
-	return models.ChatbotResponse{Response: "Cold email sent successfully!"}, nil
+	
+	return models.ChatbotResponse{
+		Response: fmt.Sprintf("Email subject: %s\n\nEmail body:\n%s", emailSubject, emailBody),
+	}, nil
 }
