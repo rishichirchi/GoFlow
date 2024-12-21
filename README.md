@@ -11,41 +11,41 @@ GoFlow is a project that leverages the power of generative AI to streamline and 
 
 ```
 Gotta-Go/
-├── backend/            # Backend for the application
+├── backend/            
 │   ├── handlers/       # Contains the main handler functions for various features
-│   │   ├── code-reviewer.go  # Handler for generating code reviews
-│   │   ├── email-outreach.go # Handler for generating cold outreach emails
-│   │   ├── gemini-chatbot.go # Handler for interacting with the Gemini chatbot
-│   │   ├── generate-posts.go # Handler for generating social media posts
-│   │   └── make-post.go      # Handler for posting tweets
+│   │   ├── code-reviewer.go 
+│   │   ├── email-outreach.go 
+│   │   ├── gemini-chatbot.go 
+│   │   ├── generate-posts.go
+│   │   └── make-post.go     
 │   ├── instructions/   # Markdown files for prompts and templates
-│   │   ├── code-reviewer.md    # Instructions for code review prompt
-│   │   ├── gofr-introduction.md # Instructions for chatbot introduction
-│   │   └── sm-post.md          # Instructions for social media post prompt
+│   │   ├── code-reviewer.md    
+│   │   ├── gofr-introduction.md 
+│   │   └── sm-post.md          
 │   ├── models/         # Contains data models used across the application
-│   │   ├── chatbot-response.go # Model for Gemini AI responses
-│   │   ├── code-review.go      # Model for code reviews
-│   │   └── github-pr.go        # Model for GitHub pull request responses
-│   ├── .gitignore      # Git ignore file for backend
-│   ├── go.mod          # Go module definition
-│   ├── go.sum          # Go module dependency file
-│   └── main.go         # Entry point for the application
+│   │   ├── chatbot-response.go 
+│   │   ├── code-review.go      
+│   │   └── github-pr.go       
+│   ├── .gitignore      
+│   ├── go.mod          
+│   ├── go.sum          
+│   └── main.go         
 ├── frontend/           # Frontend for the application
-│   ├── public/         # Public assets
+│   ├── public/         
 │   └── src/            # Source code for the frontend
-│       ├── .gitignore  # Git ignore file for frontend
-│       ├── README.md   # Frontend documentation
-│       ├── background.js      # Background scripts
-│       ├── manifest.json      # Configuration for the extension
-│       ├── package.json       # Node.js dependencies
-│       ├── package-lock.json  # Lockfile for dependencies
-│       ├── tsconfig.json      # TypeScript configuration
-│       └── webpack.config.js  # Webpack configuration
+│       ├── .gitignore  
+│       ├── README.md   
+│       ├── background.js      
+│       ├── manifest.json      
+│       ├── package.json       
+│       ├── package-lock.json  
+│       ├── tsconfig.json     
+│       └── webpack.config.js  
 ├── middleware/         # Middleware layer
-│   ├── .gitignore      # Git ignore file for middleware
+│   ├── .gitignore      
 │   ├── index.js        # Middleware entry point
-│   ├── package.json    # Node.js dependencies
-│   └── package-lock.json # Lockfile for dependencies
+│   ├── package.json
+│   └── package-lock.json 
 ├── README.md           # Project documentation
 ```
 
