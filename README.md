@@ -1,7 +1,5 @@
 ## GoFlow: AI-Powered GitHub Workflow Automation and Chrome Extension
 
-| `GITHUB_TOKEN`     | Personal access token for GitHub API. Required scopes: `repo`, `read:org`. |# Gotta-Go: Generative AI and GitHub Integration Handlers
-
 ## Overview
 GoFlow is a project that leverages the power of generative AI to streamline and enhance tasks such as code review generation, social media post creation, email drafting, and pull request analysis. The project integrates the Gemini generative AI model along with GitHub and Twitter APIs to automate workflows effectively.
 
