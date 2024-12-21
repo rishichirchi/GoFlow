@@ -109,7 +109,7 @@ The following environment variables are required:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/rishichirchi/gotta-go.git
+   git clone https://github.com/rishichirchi/GoFlow.git
    cd gotta-go
    ```
 
